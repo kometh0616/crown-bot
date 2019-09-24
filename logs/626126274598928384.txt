@@ -1,0 +1,7 @@
+Command help executed!
+Message content: >help (626126298716045333)
+Executor: Kometh#7624 (209635318503047168)
+Guild: The Facility (469619865016336384)
+Channel: cordial-content-communication (469619865016336387)
+Timestamp: Tue, 24 Sep 2019 18:42:22 GMT
+Stack: none
