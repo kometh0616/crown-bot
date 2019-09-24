@@ -1,0 +1,21 @@
+Command eval executed!
+Message content: >eval (626129947047493633)
+Executor: Kometh#7624 (209635318503047168)
+Guild: The Facility (469619865016336384)
+Channel: cordial-content-communication (469619865016336387)
+Timestamp: Tue, 24 Sep 2019 18:56:52 GMT
+Stack: none
+Command eval executed!
+Message content: >eval 8 (626129962730127389)
+Executor: Kometh#7624 (209635318503047168)
+Guild: The Facility (469619865016336384)
+Channel: cordial-content-communication (469619865016336387)
+Timestamp: Tue, 24 Sep 2019 18:56:56 GMT
+Stack: none
+Command ping executed!
+Message content: >ping (626130153537536021)
+Executor: Kometh#7624 (209635318503047168)
+Guild: The Facility (469619865016336384)
+Channel: cordial-content-communication (469619865016336387)
+Timestamp: Tue, 24 Sep 2019 18:57:42 GMT
+Stack: none
