@@ -1,7 +1,0 @@
-Command help executed!
-Message content: >help ping (626126981368381458)
-Executor: Kometh#7624 (209635318503047168)
-Guild: The Facility (469619865016336384)
-Channel: cordial-content-communication (469619865016336387)
-Timestamp: Tue, 24 Sep 2019 18:45:05 GMT
-Stack: none
