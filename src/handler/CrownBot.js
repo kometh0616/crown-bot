@@ -26,9 +26,11 @@ class CrownBot extends Client {
     loadCommands(dir = path.join(__dirname, '../commands')) {
         const commands = fs.readdirSync(dir)
         commands.forEach(file => {
-            const Command = require(path.join(dir, file))
-            const command = new Command()
-            this.commands.push(command)
+            if (file.endsWith('.js')) {
+                const Command = require(path.join(dir, file))
+                const command = new Command()
+                this.commands.push(command)
+            }
         })
         return this
     }
