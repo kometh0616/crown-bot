@@ -14,6 +14,7 @@ class Command {
             await this.run(client, message, args)
             await this.log(message)
         } catch (e) {
+            console.error(e)
             await this.log(message, e.stack)
         }
     }

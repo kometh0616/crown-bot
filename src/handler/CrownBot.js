@@ -10,6 +10,7 @@ class CrownBot extends Client {
         this.prefix = botOptions.prefix
         this.token = botOptions.token
         this.ownerID = botOptions.ownerID
+        this.apikey = botOptions.apikey
         this.commands = []
         this.sequelize = new Sequelize('database', 'user', 'password', {
             host: 'localhost',
@@ -19,6 +20,7 @@ class CrownBot extends Client {
         })
         this.queryInterface = this.sequelize.getQueryInterface()
         this.models = {}
+        this.url = 'https://ws.audioscrobbler.com/2.0/?'
     }
 
     loadCommands(dir = path.join(__dirname, '../commands')) {
@@ -47,7 +49,7 @@ class CrownBot extends Client {
             const model = this.sequelize.import(path.join(dir, file))
             model.sync()
             const [ modelName ] = file.split('.')
-            this.models[modelName] = model 
+            this.models[modelName.toLowerCase()] = model 
         })
         return this
     }
