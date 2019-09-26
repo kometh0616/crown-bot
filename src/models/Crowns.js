@@ -4,10 +4,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             unique: `crown`
         },
-        userID: {
-            type: DataTypes.STRING,
-            unique: `crown`
-        },
+        userID: DataTypes.STRING,
         artistName: {
             type: DataTypes.STRING,
             unique: `crown`

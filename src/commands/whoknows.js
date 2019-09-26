@@ -88,8 +88,46 @@ class WhoKnowsCommand extends Command {
                 await message.reply(`no one listens to ${data.artist.name} here.`)
                 return
             }
+            know = know.sort((a, b) => parseInt(b.plays) - parseInt(a.plays))
+            const sorted = know[0]
+            try {
+                const banned = await bans.findOne({
+                    where: {
+                        guildID: message.guild.id,
+                        userID: sorted.member.id
+                    }
+                })
+                if (!banned) {
+                    await client.models.crowns.create({
+                        guildID: message.guild.id,
+                        userID: sorted.member.id,
+                        artistName: data.artist.name,
+                        artistPlays: sorted.plays
+                    })
+                }
+            } catch (e) {
+                if (e.name === 'SequelizeUniqueConstraintError') {
+                    const crown = await client.models.crowns.findOne({
+                        where: {
+                            guildID: message.guild.id,
+                            artistName: data.artist.name
+                        }
+                    })
+                    if (parseInt(crown.artistPlays) < parseInt(sorted.plays) || !guild.members.has(crown.userID)) {
+                        await client.models.crowns.update({
+                            userID: sorted.member.id,
+                            artistPlays: sorted.plays
+                        }, {
+                            where: {
+                                guildID: message.guild.id,
+                                artistName: data.artist.name
+                            }
+                        })
+                    }
+                }
+            }
             let num = 0
-            const description = know.sort((a, b) => parseInt(b.plays) - parseInt(a.plays))
+            const description = know
                 .map(x => `${++num}. ${x.member.user.username} - **${x.plays}** plays`)
                 .join('\n')
             const embed = new BotEmbed(message)
