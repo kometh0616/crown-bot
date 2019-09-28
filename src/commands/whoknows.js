@@ -39,7 +39,7 @@ class WhoKnowsCommand extends Command {
             } else {
                 const artist = data.recenttracks.track[0]
                 if (artist[`@attr`] && artist[`@attr`].nowplaying) {
-                    artistName = artist[`#text`]
+                    artistName = artist.artist[`#text`]
                 }
             }
         } else {
