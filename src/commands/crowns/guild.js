@@ -26,7 +26,7 @@ exports.run = async (client, message, args) => {
             entries.map(([userID, amount]) => {
                    return `${++num}. ${message.guild.members.get(userID).user.username} with **${amount}** crowns`
                 })
-                .join('\n')
+                .join('\n') + `${authorPos ? `\n\nYour position is: **${authorPos}**` : ``}`
         )
     await message.channel.send(embed)                 
 }
