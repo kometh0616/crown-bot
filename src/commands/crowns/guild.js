@@ -23,7 +23,8 @@ exports.run = async (client, message, args) => {
         .setTitle(`${message.guild.name}'s crown leaderboard`)
         .setThumbnail(message.guild.iconURL)
         .setDescription(
-            entries.map(([userID, amount]) => {
+            entries.sort(([_, a], [__, b]) => b - a)
+                .map(([userID, amount]) => {
                    return `${++num}. ${message.guild.members.get(userID).user.username} with **${amount}** crowns`
                 })
                 .join('\n') + `${authorPos ? `\n\nYour position is: **${authorPos}**` : ``}`
