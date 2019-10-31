@@ -88,7 +88,12 @@ class CrownBot extends Client {
             .createExpressListener()
             .configureLogging()
             .login(this.token)
-            .then(() => console.log('Logged in.'))
+            .catch(e => console.log(`An error occurred when attempting to log in. ${e}`))
+            .then(f => {
+                if (f) {
+                    console.log('Logged in.')
+                }
+            })
     }
 }
 
