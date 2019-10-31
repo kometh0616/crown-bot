@@ -45,9 +45,11 @@ class CrownsCommand extends Command {
         })
         if (crowns.length > 0) {
             let num = 0
-            const description = crowns.slice(0, 10)
+            const description = crowns
                 .sort((a, b) => parseInt(b.artistPlays) - parseInt(a.artistPlays))
+                .slice(0, 10)
                 .map(x => `${++num}. ${x.artistName} - **${x.artistPlays}** plays`)
+                .join('\n')
                 + `\n\n${user.user.username} has **${crowns.length}** crowns in ${message.guild.name}.`
             const embed = new BotEmbed(message)
                 .setTitle(`Crowns of ${user.user.tag} in ${message.guild.name}`)

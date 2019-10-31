@@ -16,7 +16,7 @@ exports.run = async (client, message, args) => {
         }
     })
     let num = 0
-    const entries = [...amounts.entries()]
+    const entries = [...amounts.entries()].sort(([_, a], [__, b]) => b - a)
     const hasCrowns = entries.findIndex(([userID]) => userID === message.author.id)
     const authorPos = hasCrowns ? hasCrowns + 1 : null
     const embed = new BotEmbed(message)
