@@ -2,6 +2,8 @@ const { Client, SnowflakeUtil } = require('discord.js')
 const fs = require('fs')
 const path = require('path')
 const Sequelize = require('sequelize')
+const express = require('express')
+const http = require('http')
 
 class CrownBot extends Client {
 
@@ -65,10 +67,25 @@ class CrownBot extends Client {
         return this
     }
 
+    createExpressListener() {
+        const app = express()
+
+        app.get('/', (request, response) => {
+            response.sendStatus(200)
+        })
+
+        setInterval(() => {
+            http.get(`http://${process.env.PROJECT_DOMAIN}.glitch.me`)
+        }, 280000);
+
+        return this;
+    }
+
     init() {
         this.loadCommands()
             .loadEvents()
             .loadModels()
+            .createExpressListener()
             .configureLogging()
             .login(this.token)
             .then(() => console.log('Logged in.'))

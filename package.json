@@ -1,6 +1,10 @@
 {
+  "scripts": {
+    "start": "node index.js"
+  },
   "dependencies": {
     "discord.js": "^11.5.1",
+    "express": "^4.17.1",
     "node-fetch": "^2.6.0",
     "sequelize": "^5.19.0",
     "sqlite3": "^4.1.0"
