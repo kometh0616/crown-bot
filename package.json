@@ -1,4 +1,7 @@
 {
+  "name": "crown-bot",
+  "version": "1.0.0",
+  "bin": "index.js",
   "scripts": {
     "start": "node index.js"
   },

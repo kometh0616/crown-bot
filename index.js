@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const Bot = require('./src/handler/CrownBot')
 const { prefix, token, ownerID, apikey } = require('./config.json')
 
