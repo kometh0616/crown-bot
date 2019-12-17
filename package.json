@@ -5,6 +5,9 @@
   "scripts": {
     "start": "node index.js"
   },
+  "engines": {
+    "node": "11.x"
+  },
   "dependencies": {
     "discord.js": "^11.5.1",
     "express": "^4.17.1",
