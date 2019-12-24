@@ -25,6 +25,11 @@ class WhoKnowsCommand extends Command {
         })
         let artistName
         if (args.length === 0) {
+            if (user === null) {
+                await message.reply(`you are not logged in! Please login by doing \`${client.prefix}login <lastfm username>\` ` +
+                `to continue, or provide a name of your artist.`)
+                return
+            }
             const params = stringify({
                 method: 'user.getrecenttracks',
                 user: user.username,

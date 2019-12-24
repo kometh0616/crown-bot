@@ -25,18 +25,18 @@ class CrownsCommand extends Command {
     async run(client, message, args) {
         const files = fs.readdirSync(path.join(__dirname, 'crowns'))
         const cmds = files.map(x => x.slice(0, x.length - 3))
-        let user
         if (args.length > 0) {
             if (cmds.includes(args[0])) {
                 const command = require(`./crowns/${args[0]}`)
                 await command.run(client, message, args.slice(1))
                 return
-            } else {
-                user = message.mentions.members.first()
             }
-        } else {
-            user = message.member
         }
+        const user = args.length > 0 ? message.mentions.members.first() : message.member;
+        if (user === undefined || user === null) {
+            await message.reply(`you must mention a user you want to get crowns of!`)
+            return
+        } 
         const crowns = await client.models.crowns.findAll({
             where: {
                 guildID: message.guild.id,
