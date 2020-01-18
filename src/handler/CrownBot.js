@@ -29,9 +29,15 @@ class CrownBot extends Client {
         const commands = fs.readdirSync(dir)
         commands.forEach(file => {
             if (file.endsWith('.js')) {
-                const Command = require(path.join(dir, file))
-                const command = new Command()
-                this.commands.push(command)
+                if (file.startsWith('banwhoknows') && process.argv[2] === '--oh-please-give-me-the-banwhoknows-command-i-beg-of-you') {
+                    const Command = require(path.join(dir, file))
+                    const command = new Command()
+                    this.commands.push(command)
+                } else if (!file.startsWith('banwhoknows')) {
+                    const Command = require(path.join(dir, file))
+                    const command = new Command()
+                    this.commands.push(command)
+                }
             }
         })
         return this

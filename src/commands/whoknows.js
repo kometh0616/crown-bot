@@ -17,7 +17,7 @@ class WhoKnowsCommand extends Command {
     }
 
     async run(client, message, args) {
-        const { bans, users, crowns } = client.models
+        const { bans, users } = client.models
         const user = await users.findOne({
             where: {
                 userID: message.author.id
