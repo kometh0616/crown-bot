@@ -83,9 +83,10 @@ class WhoKnowsCommand extends Command {
                 if (data.error) {
                     continue
                 }
-                if (data.artist.stats.userplaycount !== '0') {
+                const { userplaycount } = data.artist.stats
+                if (userplaycount !== '0' || userplaycount !== undefined) {
                     know.push({
-                        member, plays: data.artist.stats.userplaycount
+                        member, plays: userplaycount
                     })
                 }
             }
